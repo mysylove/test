@@ -23,32 +23,32 @@ def excel_to_list(filename):
 		a0 = r[0].value
 		b0 = r[1].value
 		c0 = r[2].value
-		d0 = r[3].value
-		e0 = r[4].value
-		f0 = r[5].value
-		g0 = r[6].value
-		h0 = r[7].value
-		i0 = r[8].value
-		j0 = r[9].value
-		k0 = r[10].value
-		l0 = r[11].value
-		m0 = r[12].value
-		n0 = r[13].value
-		o0 = r[14].value
-		p0 = r[15].value
-		q0 = r[16].value
-		r0 = r[17].value
-		s0 = r[18].value
-		t0 = r[19].value
-		u0 = r[20].value
-		v0 = r[21].value
-		w0 = r[22].value
-		x0 = r[23].value
-		y0 = r[24].value
-		z0 = r[25].value
-		aa0 = r[26].value
-		ab0 = r[27].value
-		ac0 = r[28].value
+		d0 = r[4].value
+		e0 = r[10].value
+		f0 = r[11].value
+		g0 = r[12].value
+		h0 = r[16].value
+		i0 = r[17].value
+		j0 = r[18].value
+		k0 = r[19].value
+		l0 = r[20].value
+		m0 = r[21].value
+		n0 = r[22].value
+		o0 = r[23].value
+		p0 = r[24].value
+		q0 = r[26].value
+		r0 = r[27].value
+		s0 = r[28].value
+		t0 = r[29].value
+		u0 = r[30].value
+		v0 = r[31].value
+		w0 = r[35].value
+		x0 = r[36].value
+		y0 = r[37].value
+		z0 = r[38].value
+		aa0 = r[45].value
+		ab0 = r[46].value
+		ac0 = r[48].value
 
 		tmp_data.append(a0)
 		tmp_data.append(b0)
@@ -95,10 +95,7 @@ def mysql_insert(db,table,data):
 	try:
 		cursor = db.cursor()
 		#sql = "INSERT INTO"+table+" (stuNum,name) VALUES (%s, %s)"
-		#sql = "INSERT INTO "+table+" VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-		#sql = "INSERT INTO "+table+" VALUES (%s,)
-		print(data[0])
 		cursor.executemany(sql,data)
 		db.commit()
 		print("[+] Insertion success\n")
@@ -127,7 +124,7 @@ def main():
 		db="test",
 		charset='utf8'
 	)
-	print("* * * * * * 세미나 랜덤지목 데이터 삽입 자동화 프로그램* * * * * *")
+	print("* * * * * * OWL 엑셀 변환 데이터 삽입 자동화 프로그램* * * * * *")
 	print("[*] exit 입력 시 종료됩니다.")
 	print("[*] 엑셀 파일은 .py 파일과 같은 디렉토리에 존재해야 합니다.")
 	print("[*] 테이블이 존재하지 않을 경우 생성 후 가능합니다.\n")
