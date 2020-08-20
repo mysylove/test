@@ -23,32 +23,52 @@ def excel_to_list(filename):
 		a0 = r[0].value
 		b0 = r[1].value
 		c0 = r[2].value
-		d0 = r[4].value
-		e0 = r[10].value
-		f0 = r[11].value
-		g0 = r[12].value
-		h0 = r[16].value
-		i0 = r[17].value
-		j0 = r[18].value
-		k0 = r[19].value
-		l0 = r[20].value
-		m0 = r[21].value
-		n0 = r[22].value
-		o0 = r[23].value
-		p0 = r[24].value
-		q0 = r[26].value
-		r0 = r[27].value
-		s0 = r[28].value
-		t0 = r[29].value
-		u0 = r[30].value
-		v0 = r[31].value
-		w0 = r[35].value
-		x0 = r[36].value
-		y0 = r[37].value
-		z0 = r[38].value
-		aa0 = r[45].value
-		ab0 = r[46].value
-		ac0 = r[48].value
+		d0 = r[3].value
+		e0 = r[4].value
+		f0 = r[5].value
+		g0 = r[6].value
+		h0 = r[7].value
+		i0 = r[8].value
+		j0 = r[9].value
+		k0 = r[10].value
+		l0 = r[11].value
+		m0 = r[12].value
+		n0 = r[13].value
+		o0 = r[14].value
+		p0 = r[15].value
+		q0 = r[16].value
+		r0 = r[17].value
+		s0 = r[18].value
+		t0 = r[19].value
+		u0 = r[20].value
+		v0 = r[21].value
+		w0 = r[22].value
+		x0 = r[23].value
+		y0 = r[24].value
+		z0 = r[25].value
+		aa0 = r[26].value
+		ab0 = r[27].value
+		ac0 = r[28].value
+		ad0 = r[29].value
+		ae0 = r[30].value
+		af0 = r[31].value
+		ag0 = r[32].value
+		ah0 = r[33].value
+		ai0 = r[34].value
+		aj0 = r[35].value
+		ak0 = r[36].value
+		al0 = r[37].value
+		am0 = r[38].value
+		an0 = r[39].value
+		ao0 = r[40].value
+		ap0 = r[41].value
+		aq0 = r[42].value
+		ar0 = r[43].value
+		as0 = r[44].value
+		at0 = r[45].value
+		au0 = r[46].value
+		av0 = r[47].value
+		aw0 = r[48].value
 
 		tmp_data.append(a0)
 		tmp_data.append(b0)
@@ -79,6 +99,26 @@ def excel_to_list(filename):
 		tmp_data.append(aa0)
 		tmp_data.append(ab0)
 		tmp_data.append(ac0)
+		tmp_data.append(ad0)
+		tmp_data.append(ae0)
+		tmp_data.append(af0)
+		tmp_data.append(ag0)
+		tmp_data.append(ah0)
+		tmp_data.append(ai0)
+		tmp_data.append(aj0)
+		tmp_data.append(ak0)
+		tmp_data.append(al0)
+		tmp_data.append(am0)
+		tmp_data.append(an0)
+		tmp_data.append(ao0)
+		tmp_data.append(ap0)
+		tmp_data.append(aq0)
+		tmp_data.append(ar0)
+		tmp_data.append(as0)
+		tmp_data.append(at0)
+		tmp_data.append(au0)
+		tmp_data.append(av0)
+		tmp_data.append(aw0)
 
 		result.append(tuple(tmp_data))
 		tmp_data = []
@@ -95,12 +135,13 @@ def mysql_insert(db,table,data):
 	try:
 		cursor = db.cursor()
 		#sql = "INSERT INTO"+table+" (stuNum,name) VALUES (%s, %s)"
-		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+		#sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0, ad0, ae0, af0, ag0, ah0, ai0, aj0, ak0, al0, am0, an0, ao0, ap0, aq0, ar0, as0, at0, au0, av0, aw0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 		cursor.executemany(sql,data)
 		db.commit()
 		print("[+] Insertion success\n")
 	except:
-		logging.error(tracback.format_exc())
+		logging.error(traceback.format_exc())
 		print("[ERROR] Insertion failed\n")
 
 # mysql 테이블의 기존 데이터를 삭제
