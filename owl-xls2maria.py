@@ -49,6 +49,7 @@ def excel_to_list(filename):
 		aa0 = r[45].value
 		ab0 = r[46].value
 		ac0 = r[48].value
+		ad0 = r[61].value
 
 		tmp_data.append(a0)
 		tmp_data.append(b0)
@@ -79,6 +80,7 @@ def excel_to_list(filename):
 		tmp_data.append(aa0)
 		tmp_data.append(ab0)
 		tmp_data.append(ac0)
+		tmp_data.append(ad0)
 
 		result.append(tuple(tmp_data))
 		tmp_data = []
@@ -95,7 +97,7 @@ def mysql_insert(db,table,data):
 	try:
 		cursor = db.cursor()
 		#sql = "INSERT INTO"+table+" (stuNum,name) VALUES (%s, %s)"
-		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0, ad0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 		cursor.executemany(sql,data)
 		db.commit()
 		print("[+] Insertion success\n")
