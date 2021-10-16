@@ -150,6 +150,8 @@ def main():
 			continue
 		print("\n")
 
+	input("Press enter to exit")
+
 	sys.exit(1)
 
 if __name__ == "__main__":
