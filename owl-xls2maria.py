@@ -6,6 +6,7 @@ import os
 import sys, traceback
 import logging
 import pymysql
+import configparser
 
 result = []
 
@@ -131,7 +132,7 @@ def main():
 	print("[*] 엑셀 파일은 .py 파일과 같은 디렉토리에 존재해야 합니다.")
 	print("[*] 테이블이 존재하지 않을 경우 생성 후 가능합니다.\n")
 	while True:
-		filename = input("1. 엑셀 파일명 입력 : ")
+		filename = input("1. 엑셀 파일명 입력('exit' is while break) : ")
 		if fileCheck(filename) is True:
 			table = input("3. 데이터베이스 테이블명 입력 : ")
 			excel_to_list(filename)
@@ -143,16 +144,75 @@ def main():
 			else:
 				continue
 		elif filename == "exit":
-			db.close()
-			sys.exit(1)
+			break
 		else:
 			print("[ERROR] 파일이 존재하지 않습니다.")
 			continue
 		print("\n")
 
-	input("Press enter to exit")
+	while 1:
+		input2 = input("Press q:exit, s:sql_execute ...")
+		if input2 == 'q':
+			break
+		elif input2 == 's':
+			startdt = input("시작일 입력(ex:2022-02-07) :")
+			enddt = input("종료일 입력(ex:2022-02-11) :")
+			print(startdt, enddt)
+			answer = input("시작일 종료일 확인됐나요? 진행할까요? (y,n) :")
+			if answer == 'y':
+				config = configparser.RawConfigParser()
+				config.read('config.ini', encoding='utf-8')
+				query1 = config['query']
+				sql1 = query1['sql1']
+				sql2 = query1['sql2']
+				sql3 = query1['sql3']
+				sql4 = query1['sql4']
 
-	sys.exit(1)
+				curs = db.cursor()
+				curs.execute(sql1, (startdt, enddt))
+				rows = curs.fetchall()
+				print("===============================================")
+				print("===== 시험 신청 건수 : " + str(len(rows)))
+				print("===============================================")
+				print("[실제 데이터]")
+				for row in rows:
+					print(row)
+
+				curs.execute(sql2, (startdt, enddt))
+				rows = curs.fetchall()
+				print("===============================================")
+				print("===== 시험 완료 건수 : " + str(len(rows)))
+				print("===============================================")
+				print("[실제 데이터]")
+				for row in rows:
+					print(row)
+
+				curs.execute(sql3, (startdt, enddt))
+				rows = curs.fetchall()
+				print("===============================================")
+				print("===== 최초 문의현황 전체 건수 : " + str(len(rows)))
+				print("===============================================")
+				print("[실제 데이터]")
+				for row in rows:
+					print(row)
+
+				curs.execute(sql4, (startdt, enddt))
+				rows = curs.fetchall()
+				print("===============================================")
+				print("===== [최초 문의현황 그룹핑]")
+				print("===============================================")
+				for row in rows:
+					print(row)
+			else:
+				continue
+
+	try:
+		db.close()
+		sys.exit(1)
+	except SystemExit:
+		pass
+	except:
+		print("Something went horribly wrong")
 
 if __name__ == "__main__":
     main()

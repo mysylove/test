@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['owl-xls2maria.py'],
-             pathex=['D:\\SRC\\GitHub\\test\\test'],
+             pathex=['D:\\SRC\\GitHub\\test'],
              binaries=[],
              datas=[],
              hiddenimports=[],
