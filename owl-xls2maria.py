@@ -25,32 +25,33 @@ def excel_to_list(filename):
 		b0 = r[1].value
 		c0 = r[2].value
 		d0 = r[4].value
-		e0 = r[10].value
-		f0 = r[11].value
-		g0 = r[12].value
-		h0 = r[16].value
-		i0 = r[17].value
-		j0 = r[18].value
-		k0 = r[19].value
-		l0 = r[20].value
-		m0 = r[21].value
-		n0 = r[22].value
-		o0 = r[23].value
-		p0 = r[24].value
-		q0 = r[26].value
-		r0 = r[27].value
-		s0 = r[28].value
-		t0 = r[29].value
-		u0 = r[30].value
-		v0 = r[31].value
-		w0 = r[35].value
-		x0 = r[36].value
-		y0 = r[37].value
-		z0 = r[38].value
-		aa0 = r[45].value
-		ab0 = r[46].value
-		ac0 = r[48].value
-		ad0 = r[61].value
+		e0 = r[12].value
+		f0 = r[13].value
+		g0 = r[14].value
+		h0 = r[18].value
+		i0 = r[19].value
+		j0 = r[20].value
+		k0 = r[21].value
+		l0 = r[22].value
+		m0 = r[23].value
+		n0 = r[24].value
+		o0 = r[25].value
+		p0 = r[26].value
+		q0 = r[28].value
+		r0 = r[29].value
+		s0 = r[30].value
+		t0 = r[31].value
+		u0 = r[32].value
+		v0 = r[33].value
+		w0 = r[37].value
+		x0 = r[38].value
+		y0 = r[39].value
+		z0 = r[40].value
+		aa0 = r[47].value
+		ab0 = r[48].value
+		ac0 = r[49].value
+		ad0 = r[50].value
+		ae0 = r[63].value
 
 		tmp_data.append(a0)
 		tmp_data.append(b0)
@@ -82,6 +83,7 @@ def excel_to_list(filename):
 		tmp_data.append(ab0)
 		tmp_data.append(ac0)
 		tmp_data.append(ad0)
+		tmp_data.append(ae0)
 
 		result.append(tuple(tmp_data))
 		tmp_data = []
@@ -98,7 +100,7 @@ def mysql_insert(db,table,data):
 	try:
 		cursor = db.cursor()
 		#sql = "INSERT INTO"+table+" (stuNum,name) VALUES (%s, %s)"
-		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0, ad0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+		sql = "INSERT INTO "+table+" (a0, b0, c0, d0, e0, f0, g0, h0, i0, j0, k0, l0, m0, n0, o0, p0, q0, r0, s0, t0, u0, v0, w0, x0, y0, z0, aa0, ab0, ac0, ad0, ae0) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 		cursor.executemany(sql,data)
 		db.commit()
 		print("[+] Insertion success\n")
